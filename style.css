@@ -187,8 +187,7 @@ body {
     min-height: 220px;
     border-radius: 28px;
     padding: 10px 16px 12px;
-    background:
-        linear-gradient(180deg, #ff7064 0%, var(--card-deep) 100%);
+    background: #ff927c;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
@@ -222,10 +221,15 @@ body {
 }
 
 .portrait-tile {
+    appearance: none;
     position: relative;
     overflow: hidden;
     border-radius: 12px;
     border: 1px solid rgba(20, 11, 9, 0.42);
+    padding: 0;
+    cursor: zoom-in;
+    color: inherit;
+    font: inherit;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     background: var(--tile-bg, #6d3d60);
     margin: 0;
@@ -243,6 +247,41 @@ body {
     object-position: center center;
     background: #6e5168;
     image-rendering: pixelated;
+    pointer-events: none;
+}
+
+.portrait-tile:hover,
+.portrait-tile:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.9);
+    outline-offset: 2px;
+}
+
+.portrait-tile:active {
+    transform: translateY(1px);
+}
+
+.portrait-tile::after {
+    content: "view";
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    padding: 2px 5px 1px;
+    border-radius: 999px;
+    background: rgba(20, 11, 9, 0.74);
+    color: #fff;
+    font-size: 0.42rem;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    opacity: 0.12;
+    pointer-events: none;
+    transition: opacity 140ms ease, transform 140ms ease;
+    transform: translateY(2px);
+}
+
+.portrait-tile:hover::after,
+.portrait-tile:focus-visible::after {
+    opacity: 0.96;
+    transform: translateY(0);
 }
 
 .commission-note {
@@ -344,6 +383,75 @@ body {
     text-decoration-thickness: 1px;
 }
 
+.image-viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    background: rgba(20, 11, 9, 0.66);
+    backdrop-filter: blur(2px);
+}
+
+.image-viewer[hidden] {
+    display: none;
+}
+
+.image-viewer__backdrop {
+    position: absolute;
+    inset: 0;
+}
+
+.image-viewer__panel {
+    position: relative;
+    width: min(92vw, 820px);
+    max-height: calc(100vh - 36px);
+    padding: 52px 14px 14px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #ff8d73 0%, #ff7467 100%);
+    box-shadow: 0 18px 44px rgba(20, 11, 9, 0.28);
+}
+
+.image-viewer__close {
+    appearance: none;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: 0;
+    border-radius: 999px;
+    padding: 0 12px;
+    min-width: 64px;
+    min-height: 36px;
+    background: #140b09;
+    color: #fff;
+    font: inherit;
+    font-size: 0.55rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-transform: lowercase;
+}
+
+.image-viewer__close:hover,
+.image-viewer__close:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.85);
+    outline-offset: 2px;
+}
+
+.image-viewer__image {
+    display: block;
+    width: 100%;
+    max-height: calc(100vh - 112px);
+    border-radius: 14px;
+    object-fit: contain;
+    background: #6e5168;
+    image-rendering: pixelated;
+}
+
+body.has-image-viewer-open {
+    overflow: hidden;
+}
+
 @media (max-width: 560px) {
     .page {
         padding: 12px 12px 24px;
@@ -359,13 +467,14 @@ body {
         flex-wrap: wrap;
         justify-content: center;
         gap: 8px 14px;
-        padding: 12px 14px 10px;
+        padding: 14px 16px 12px;
     }
 
     .nav-chip {
         min-height: 44px;
-        padding: 6px 8px;
+        padding: 8px 12px;
         font-size: clamp(0.62rem, 3.1vw, 0.82rem);
+        letter-spacing: 0.04em;
         border-radius: 999px;
     }
 
@@ -412,7 +521,7 @@ body {
     .commission-board {
         width: min(100%, 100%);
         min-height: 0;
-        padding: 14px;
+        padding: 16px;
         gap: 12px;
     }
 
@@ -424,7 +533,7 @@ body {
     .commission-card {
         min-height: 0;
         border-radius: 24px;
-        padding: 10px 14px 12px;
+        padding: 12px 16px 14px;
     }
 
     .portrait-grid {
@@ -438,13 +547,37 @@ body {
     }
 
     .pricing-table {
-        font-size: 0.6rem;
+        font-size: 0.56rem;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+        padding: 7px 6px 8px;
     }
 
     .process-list,
     .commission-note,
     .commission-terms p {
         font-size: 0.74rem;
+    }
+
+    .image-viewer {
+        padding: 12px;
+    }
+
+    .image-viewer__panel {
+        width: min(100vw - 24px, 820px);
+        padding: 48px 12px 12px;
+        max-height: calc(100vh - 24px);
+    }
+
+    .image-viewer__close {
+        min-width: 56px;
+        min-height: 34px;
+    }
+
+    .image-viewer__image {
+        max-height: calc(100vh - 88px);
     }
 
     .site-footer {

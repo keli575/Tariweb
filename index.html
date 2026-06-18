@@ -25,10 +25,9 @@
             <section class="slide is-active" id="slide-about" data-slide-panel="about" aria-label="About me slide" aria-hidden="false">
                 <article class="speech-card">
                     <p>
-                        I waste countless hours staring into a computer screen, manipulating pixels, erasing, re-creating, and then declaring it "the creative process." 
-                        Some of my talents include designing awesome characters, making beautiful drawings, and lying to myself that I will be able to complete something within a day
-                        (that is, when I can lie to myself).
-                        Whenever I am not drawing something, I am either dreaming about someone, avoiding drawing, or looking at other people's drawings and thinking about how awesome they are. Regardless of everything.
+                        I waste countless hours staring into a computer screen, manipulating pixels, erasing, re-creating, and then declaring it "the creative process." Some of my talents include designing awesome characters, making beautiful drawings, and lying to myself that I will be able to complete something within a day (that is, when I can lie to myself).
+
+Whenever I am not drawing something, I am either dreaming about someone, avoiding drawing, or looking at other people's drawings and thinking about how awesome they are. Regardless of everything.
                     </p>
                 </article>
             </section>
@@ -40,15 +39,36 @@
                             <h2 id="commission-work-title">What i can do</h2>
 
                             <div class="portrait-grid" aria-label="Sample commission styles">
-                                <figure class="portrait-tile portrait-tile--hero">
-                                    <img src="assets/commission-portrait-1.png" alt="Pixel portrait sample showing three illustrated poses">
-                                </figure>
-                                <figure class="portrait-tile portrait-tile--two">
-                                    <img src="assets/commission-portrait-2.png" alt="Pixel portrait sample with neon lighting">
-                                </figure>
-                                <figure class="portrait-tile portrait-tile--three">
-                                    <img src="assets/commission-portrait-3.png" alt="Pixel portrait sample with glasses">
-                                </figure>
+                                <button
+                                    class="portrait-tile portrait-tile--hero"
+                                    type="button"
+                                    data-portrait-trigger
+                                    data-view-src="assets/commission-portrait-1.png"
+                                    data-view-alt="Pixel portrait sample showing three illustrated poses"
+                                    aria-label="View pixel portrait sample showing three illustrated poses"
+                                >
+                                    <img src="assets/commission-portrait-1.png" alt="" aria-hidden="true">
+                                </button>
+                                <button
+                                    class="portrait-tile portrait-tile--two"
+                                    type="button"
+                                    data-portrait-trigger
+                                    data-view-src="assets/commission-portrait-2.png"
+                                    data-view-alt="Pixel portrait sample with neon lighting"
+                                    aria-label="View pixel portrait sample with neon lighting"
+                                >
+                                    <img src="assets/commission-portrait-2.png" alt="" aria-hidden="true">
+                                </button>
+                                <button
+                                    class="portrait-tile portrait-tile--three"
+                                    type="button"
+                                    data-portrait-trigger
+                                    data-view-src="assets/commission-portrait-3.png"
+                                    data-view-alt="Pixel portrait sample with glasses"
+                                    aria-label="View pixel portrait sample with glasses"
+                                >
+                                    <img src="assets/commission-portrait-3.png" alt="" aria-hidden="true">
+                                </button>
                             </div>
 
                             <p class="commission-note">
@@ -73,13 +93,13 @@
                                     <tr>
                                         <th scope="row">Portrait</th>
                                         <td>128 x 128</td>
-                                        <td>P100 / $2</td>
+                                        <td>P100 / $12</td>
                                         <td>1-2 days</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Animation</th>
                                         <td>S frames</td>
-                                        <td>P310 / $$</td>
+                                        <td>P310 / $20</td>
                                         <td>4 days</td>
                                     </tr>
                                 </tbody>
@@ -123,6 +143,14 @@
                 </article>
             </section>
         </main>
+
+        <div class="image-viewer" data-image-viewer hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded portrait preview">
+            <div class="image-viewer__backdrop" data-viewer-close></div>
+            <div class="image-viewer__panel">
+                <button class="image-viewer__close" type="button" data-viewer-close aria-label="Close image preview">close</button>
+                <img class="image-viewer__image" data-viewer-image src="" alt="">
+            </div>
+        </div>
 
         <footer class="site-footer">
             <p>(c) 2026 Tari Pixel</p>

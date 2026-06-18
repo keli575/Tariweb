@@ -1,5 +1,10 @@
 const buttons = Array.from(document.querySelectorAll('[data-slide-button]'));
 const panels = Array.from(document.querySelectorAll('[data-slide-panel]'));
+const portraitTriggers = Array.from(document.querySelectorAll('[data-portrait-trigger]'));
+const imageViewer = document.querySelector('[data-image-viewer]');
+const imageViewerImage = imageViewer?.querySelector('[data-viewer-image]');
+const imageViewerClose = imageViewer?.querySelector('[data-viewer-close].image-viewer__close');
+let lastPortraitTrigger = null;
 
 function getActiveButton(name) {
     return buttons.find((button) => button.dataset.slideButton === name) ?? buttons[0];
@@ -29,6 +34,48 @@ function positionBubbleTail(panel) {
 function refreshBubbleTail() {
     const activePanel = panels.find((panel) => panel.classList.contains('is-active')) ?? panels[0];
     positionBubbleTail(activePanel);
+}
+
+function openImageViewer(trigger) {
+    if (!imageViewer || !imageViewerImage || !trigger) {
+        return;
+    }
+
+    const source = trigger.dataset.viewSrc;
+    const altText = trigger.dataset.viewAlt ?? '';
+
+    if (!source) {
+        return;
+    }
+
+    lastPortraitTrigger = trigger;
+    imageViewerImage.src = source;
+    imageViewerImage.alt = altText;
+    imageViewer.hidden = false;
+    imageViewer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('has-image-viewer-open');
+
+    window.requestAnimationFrame(() => {
+        imageViewerClose?.focus();
+    });
+}
+
+function closeImageViewer() {
+    if (!imageViewer || !imageViewerImage || imageViewer.hidden) {
+        return;
+    }
+
+    imageViewer.hidden = true;
+    imageViewer.setAttribute('aria-hidden', 'true');
+    imageViewerImage.src = '';
+    imageViewerImage.alt = '';
+    document.body.classList.remove('has-image-viewer-open');
+
+    if (lastPortraitTrigger instanceof HTMLElement) {
+        lastPortraitTrigger.focus();
+    }
+
+    lastPortraitTrigger = null;
 }
 
 function setActiveSlide(name, { pushHistory = true } = {}) {
@@ -78,6 +125,28 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         setActiveSlide(button.dataset.slideButton);
     });
+});
+
+portraitTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+        openImageViewer(trigger);
+    });
+});
+
+imageViewer?.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) {
+        return;
+    }
+
+    if (event.target.closest('[data-viewer-close]')) {
+        closeImageViewer();
+    }
+});
+
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && imageViewer && !imageViewer.hidden) {
+        closeImageViewer();
+    }
 });
 
 window.addEventListener('hashchange', syncFromHash);
