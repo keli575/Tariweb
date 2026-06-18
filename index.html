@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tari Pixel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+    <div class="page">
+        <header class="site-header">
+            <h1 class="site-title">Tari Pixel</h1>
 
+            <nav class="primary-nav" aria-label="Sections">
+                <button class="nav-chip is-active" type="button" data-slide-button="about" aria-controls="slide-about" aria-pressed="true">about me</button>
+                <button class="nav-chip" type="button" data-slide-button="commissions" aria-controls="slide-commissions" aria-pressed="false">commissions</button>
+                <button class="nav-chip" type="button" data-slide-button="contact" aria-controls="slide-contact" aria-pressed="false">contact</button>
+            </nav>
+        </header>
+
+        <main class="showcase" aria-live="polite">
+            <section class="slide is-active" id="slide-about" data-slide-panel="about" aria-label="About me slide" aria-hidden="false">
+                <article class="speech-card">
+                    <p>
+                        Hi! I'm Tari, a pixel artist passionate about creating retro-inspired digital artwork.
+                        I specialize in character design, game assets, and animated pixel art. My goal is to
+                        create visually appealing artwork that brings ideas and stories to life.
+                    </p>
+                </article>
+            </section>
+
+            <section class="slide" id="slide-commissions" data-slide-panel="commissions" aria-label="Commissions slide" aria-hidden="true">
+                <article class="speech-card commission-board">
+                    <div class="commission-grid">
+                        <section class="commission-card commission-card--work" aria-labelledby="commission-work-title">
+                            <h2 id="commission-work-title">What i can do</h2>
+
+                            <div class="portrait-grid" aria-label="Sample commission styles">
+                                <figure class="portrait-tile portrait-tile--hero">
+                                    <img src="assets/commission-portrait-1.png" alt="Pixel portrait sample showing three illustrated poses">
+                                </figure>
+                                <figure class="portrait-tile portrait-tile--two">
+                                    <img src="assets/commission-portrait-2.png" alt="Pixel portrait sample with neon lighting">
+                                </figure>
+                                <figure class="portrait-tile portrait-tile--three">
+                                    <img src="assets/commission-portrait-3.png" alt="Pixel portrait sample with glasses">
+                                </figure>
+                            </div>
+
+                            <p class="commission-note">
+                                Custom Pixel Portraits<br>
+                                (can be animated)
+                            </p>
+                        </section>
+
+                        <section class="commission-card commission-card--pricing" aria-labelledby="commission-pricing-title">
+                            <h2 id="commission-pricing-title">Pricing</h2>
+
+                            <table class="pricing-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Size</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Est. time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Portrait</th>
+                                        <td>128 x 128</td>
+                                        <td>P100 / $2</td>
+                                        <td>1-2 days</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Animation</th>
+                                        <td>S frames</td>
+                                        <td>P310 / $$</td>
+                                        <td>4 days</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <section class="commission-card commission-card--process" aria-labelledby="commission-process-title">
+                            <h2 id="commission-process-title">Process</h2>
+
+                            <ul class="process-list">
+                                <li>No refund</li>
+                                <li>Contact &amp; discussion</li>
+                                <li>Sketch/palette</li>
+                                <li>Approval</li>
+                                <li>Rendering</li>
+                                <li>Final delivery &amp; revisions</li>
+                            </ul>
+                        </section>
+                    </div>
+
+                    <section class="commission-terms" aria-labelledby="commission-terms-title">
+                        <h2 id="commission-terms-title">Terms and Contact</h2>
+                        <p>Contact via DM or email from the Contact tab.</p>
+                    </section>
+                </article>
+            </section>
+
+            <section class="slide" id="slide-contact" data-slide-panel="contact" aria-label="Contact slide" aria-hidden="true">
+                <article class="speech-card">
+                    <p>
+                        The easiest way to reach me is through Instagram DMs.
+                    </p>
+
+                    <p class="social">
+                        instagram: <a href="https://www.instagram.com/_taripixel/" target="_blank" rel="noopener noreferrer">https://www.instagram.com/_taripixel/</a>
+                    </p>
+
+                    <p class="social">
+                        gmail: <a href="mailto:tarisuky@gmail.com">tarisuky@gmail.com</a>
+                    </p>
+                </article>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>(c) 2026 Tari Pixel</p>
+            <a href="https://www.instagram.com/_taripixel/" target="_blank" rel="noopener noreferrer">instagram @_taripixel</a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
